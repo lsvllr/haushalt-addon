@@ -1,0 +1,5 @@
+# Wird von der GitHub Action (.github/workflows/image.yml im Haushalt-Repo) nach lsvllr/haushalt-addon kopiert.
+# Hier ändern, nicht im Add-on-Repo.
+name: Haushalt
+url: https://github.com/lsvllr/haushalt-addon
+maintainer: Elias

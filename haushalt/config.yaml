@@ -1,0 +1,34 @@
+# Version setzt die GitHub Action bei jedem Build auf das Tag des Images (sha-<7 Zeichen>).
+name: Haushalt
+description: Aufgaben, Einkauf, Ausgaben und Wohnkosten für das Zuhause
+version: "sha-bf86ed6"
+slug: haushalt
+url: https://github.com/lsvllr/haushalt-addon
+arch:
+  - aarch64
+  - amd64
+image: ghcr.io/lsvllr/haushalt-tracker
+init: false
+startup: application
+boot: auto
+# Während der HA-Sicherung kurz stoppen: SQLite wird dann sauber gesichert.
+backup: cold
+# Daten (SQLite, Schlüssel) in /config, in HA unter /addon_configs/<id>_haushalt (Samba-Freigabe addon_configs).
+map:
+  - addon_config:rw
+# Kein Port nach außen: erreichbar im HA-Netz unter <Hostname>:8000 (Hostname auf der Info-Seite),
+# öffentlich über das Cloudflared-Add-on.
+options:
+  app_url: "https://haus.vollrath.app"
+  secret_key: ""
+  cron_token: ""
+  admin_password: ""
+  gemini_api_key: ""
+  allow_legacy_sessions: true
+schema:
+  app_url: url
+  secret_key: password?
+  cron_token: password?
+  admin_password: password?
+  gemini_api_key: password?
+  allow_legacy_sessions: bool
