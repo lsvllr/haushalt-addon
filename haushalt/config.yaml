@@ -1,7 +1,7 @@
 # Version setzt die GitHub Action bei jedem Build auf das Tag des Images (sha-<7 Zeichen>).
 name: Haushalt
 description: Aufgaben, Einkauf, Ausgaben und Wohnkosten für das Zuhause
-version: "sha-681d810"
+version: "sha-30b322d"
 slug: haushalt
 url: https://github.com/lsvllr/haushalt-addon
 arch:
@@ -13,6 +13,10 @@ startup: application
 boot: auto
 # Während der HA-Sicherung kurz stoppen: SQLite wird dann sauber gesichert.
 backup: cold
+# HA startet das Add-on neu, wenn /healthz nicht mehr antwortet.
+watchdog: http://[HOST]:[PORT:8000]/healthz
+# Zeit zum sauberen Beenden (laufende Anfragen, SQLite-Checkpoint), bevor HA hart stoppt.
+timeout: 20
 # Daten (SQLite, Schlüssel) in /config, in HA unter /addon_configs/<id>_haushalt (Samba-Freigabe addon_configs).
 map:
   - addon_config:rw
@@ -21,6 +25,7 @@ map:
 options:
   app_url: "https://haus.vollrath.app"
   secret_key: ""
+  reminder_hour: 8
   cron_token: ""
   admin_password: ""
   gemini_api_key: ""
@@ -28,6 +33,7 @@ options:
 schema:
   app_url: url
   secret_key: password?
+  reminder_hour: int(0,23)
   cron_token: password?
   admin_password: password?
   gemini_api_key: password?
