@@ -1,7 +1,7 @@
 # Version setzt die GitHub Action bei jedem Build auf das Tag des Images (sha-<7 Zeichen>).
 name: Haushalt
 description: Aufgaben, Einkauf, Ausgaben und Wohnkosten für das Zuhause
-version: "sha-0cb1dc0"
+version: "sha-04c9ea0"
 slug: haushalt
 url: https://github.com/lsvllr/haushalt-addon
 arch:
@@ -31,7 +31,7 @@ options:
   gemini_api_key: ""
   allow_legacy_sessions: true
   # Push an die iOS-App (APNs). Schlüsseldatei als apns.p8 in den Datenordner legen (Samba: addon_configs/…_haushalt).
-  apns_key_id: ""
+  apns_key_id: "79L98BT2Z6"
   apns_team_id: "GT7LHGM254"
   apns_topic: "de.eliasvollrath.haushalt"
 schema:
