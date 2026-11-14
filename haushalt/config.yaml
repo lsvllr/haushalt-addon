@@ -1,7 +1,7 @@
 # Version setzt die GitHub Action bei jedem Build auf das Tag des Images (sha-<7 Zeichen>).
 name: Haushalt
 description: Aufgaben, Einkauf, Ausgaben und Wohnkosten für das Zuhause
-version: "sha-5bddbd3"
+version: "sha-98bb222"
 slug: haushalt
 url: https://github.com/lsvllr/haushalt-addon
 arch:
